@@ -1,12 +1,224 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>Mapa Cidade de Goiás</title>
 </head>
+
 <body>
-    Ok, este é o meu projeto!
+    <header>
+        <h1 class="header-h1">Mapa Interativo da Cidade de Goiás</h1>
+        <div class="header-div">
+            <a class="click" href="./quiz.html" target="_blank">QUIZ</a>
+            <button class="click" data-popup="#referencia">REFERÊNCIAS</button>
+        </div>
+    </header>
+    <!-- mapa interativo -->
+    <section class="img-wrapper">
+        <img src="./Images/mapa.png" class="img" alt="mapa da cidade de Goiás" usemap="#map">
+
+        <map name="map">
+            <area class="area" shape="rect" coords="655,455,464,569" alt="Associação Beneficente de Santa Luzia" data-popup="#santa-luzia">
+            <area class="area" shape="rect" coords="796,731,634,831" alt="Quartel do XX Batalhão de Infantaria" data-popup="#quartel">
+            <area class="area" shape="rect" coords="461,386,303,488" alt="Sede própria do Instituto Federal de Goiás" data-popup="#if">
+            <area class="area" shape="rect" coords="654,289,475,436" alt="Lavanderia do Alto Santana" data-popup="#lavanderia">
+            <area class="area" shape="rect" coords="391,740,175,948" alt="Benzedeira, Paneleira e Doceira" data-popup="#benzederira">
+            <area class="area" shape="rect" coords="737,196,620,341" alt="Cortejo do Bloco Pilão de Prata" data-popup="#cortejo">
+            <area class="area" shape="rect" coords="577,1110,384,954" alt="Igreja Santa Rita" data-popup="#igreja-santa-rita">
+            <area class="area" shape="rect" coords="886,979,664,1086" alt="Museu das Bandeiras" data-popup="#museu">
+            <area class="area" shape="rect" coords="841,332,661,510" alt="Igreja Nossa Senhora do Rosário" data-popup="#igreja-nossa-senhora-rosário">
+            <area class="area" shape="rect" coords="803,830,610,973" alt="Chafariz de Cauda da Boa Morte" data-popup="#chafariz">
+            <area class="area" shape="rect" coords="776,578,575,682" alt="Mercado Municipal da Cidade de Goiás" data-popup="#mercado">
+            <area class="area" shape="rect" coords="689,1181,471,1141" alt="Serra Dourada" data-popup="#serra-dourada">
+            <area class="area" shape="rect" coords="368,535,286,720" alt="Rio Vermelho" data-popup="#rio-vermelho">
+            <area class="area" shape="poly" coords="379,313,377,322,379,330,381,337,388,339,395,336,403,332,386,307,392,302,401,299,407,296,413,292,418,287,425,284,431,280,437,276,442,271,448,267,454,264,462,260,468,254,476,250,483,243,488,238,496,234,505,231,512,226,519,221,526,216,534,213,542,210,548,208,554,206,562,206,573,202,583,203,590,208,592,216,588,222,416,326,429,319,444,315,456,310,468,303,482,295,494,290,506,283,522,275,535,262,546,254,564,247,575,240,586,234,558,252,530,268,515,282,502,288,475,301,464,308" alt="morro de santa barbara" data-popup="#patrimonio-natural">
+            <area class="area" shape="rect" coords="847,241,985,525" alt="Morro Dom Francisco" data-popup="#patrimonio-natural">
+        </map>
+    </section>
+    <!-- popups -->
+    <div id="santa-luzia" class="popup popup-style">
+        <div class="popup-style-div">
+            <img class="popup-style-img" src="./Images/Associacao beneficiente de santa luzia.png" alt="Associação Beneficente de Santa Luzia">
+            <h3>Associação Beneficente de Santa Luzia</h3>
+        </div>
+        <p class="popup-style-p">Espaço que sediou em 1909, a primeira Escola Técnica Federal do Estado de Goiás, intitulada de Escola de Aprendizes Artífices. A escola foi transferida para cidade de Goiânia em 1942, com a mudança da capital.
+        </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="quartel" class="popup popup-style">
+        <div class="popup-style-div">
+            <img class="popup-style-img" src="./Images/quartel do XX.webp" alt="Quartel do XX Batalhão de Infantaria">
+            <h3>Quartel do XX Batalhão de Infantaria</h3>
+        </div>
+        <p class="popup-style-p">Localizado na Praça Brasil Ramos Caiado, um prédio histórico, que faz parte das construções tombadas do Centro histórico de Goiás. Construído entre 1751 e 1763, abrigou o batalhão de infantaria até a década de 1940, depois disso assumiu várias funções como hotel, hospital, arquivo da prefeitura e em 2012 foi a sede provisória do Instituto Federal de Goiás - Câmpus Cidade de Goiás.
+        </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="if" class="popup popup-style">
+        <div class="popup-style-div">
+            <img class="popup-style-img" src="./Images/ifg sede.webp" alt="Sede própria do Instituto Federal de Goiás">
+            <h3>Sede própria do Instituto Federal de Goiás</h3>
+        </div>
+        <p class="popup-style-p">Edificação localizada na Rua 02, Qd.10 Lotes 01 a 15, s/n Residencial Bauman, Goiás – GO.</p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="lavanderia" class="popup popup-style">
+        <div class="popup-style-div">
+            <img class="popup-style-img" src="./Images/lavanderia.webp" alt="Lavanderia do Alto Santana">
+            <h3>Lavanderia do Alto Santana</h3>
+        </div>
+        <p class="popup-style-p">Localizada no Quilombo do Alto Santana, espaço de memória afetiva da comunidade, remanescente de Quilombo. Espaço que além de ser usado como lavanderia é um local de encontro da comunidade quilombola.
+        </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="benzederira" class="popup popup-style">
+        <div class="popup-style-div">
+            <img class="popup-style-img" src="./Images/benzedeira.webp" alt="Benzedeira, Paneleira e Doceira">
+            <h3>Benzedeira, Paneleira e Doceira</h3>
+        </div>
+        <p class="popup-style-p">O Decreto 3.551/2000 do IPHAN, Institui o Registro de Bens Culturais de Natureza Imaterial que constituem patrimônio cultural brasileiro. Conforme Art. 1º, § 1º “Esse registro se fará em um dos seguintes livros: I - Livro de Registro dos Saberes, onde serão inscritos conhecimentos e modos de fazer enraizados no cotidiano das comunidades”. A imagem apresenta elementos que que representam a cultura imaterial da Cidade de Goiás: A Benzedeira, Paneleira e Doceira, detentoras de práticas e saberes que acompanham as famílias, mantendo preservados elementos da cultura essenciais para preservação da memória e identidade da comunidade vilaboense.
+        </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="cortejo" class="popup popup-style">
+        <div class="popup-style-div">
+            <img class="popup-style-img" src="./Images/bloco piao de prata.webp" alt="Cortejo do Bloco Pilão de Prata">
+            <h3>Cortejo do Bloco Pilão de Prata</h3>
+        </div>
+        <p class="popup-style-p">bloco carnavalesco, representativo de práticas culturais e religiosas afro-brasileiras na Cidade de Goiás. É organizado por moradores das comunidades do Carmo, Santa Bárbara, Alto Sant’Anna e a Carioca.
+        </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="igreja-santa-rita" class="popup popup-style">
+        <div class="popup-style-div">
+            <img class="popup-style-img" src="./Images/igreja-santa-rita.webp" alt="Igreja Santa Rita">
+            <h3>Igreja Santa Rita</h3>
+        </div>
+        <p class="popup-style-p">Construída em meados da década de 1960, no bairro João Francisco, na Cidade de Goiás. Local em que ocorre a Festa de Santa Rita, manifestação da fé católica, durante o mês de maio.
+        </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="museu" class="popup popup-style">
+        <div class="popup-style-div">
+            <img class="popup-style-img" src="./Images/museu das bandeiras 200.webp" alt="Museu das Bandeiras">
+            <h3>Museu das Bandeiras</h3>
+        </div>
+        <p class="popup-style-p">faz parte do conjunto arquitetônico tombado pela UNESCO como Patrimônio Histórico da Humanidade. A construção do prédio data do período entre 1761 e 1766, realizada por Dom José I, então rei de Portugal. No edifício, funcionou a Casa de Câmara e Cadeia da Província de Goyaz, até a transferência da capital para Goiânia, em 1937. (DAÚDE & MARQUES, 2013).
+        </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="igreja-nossa-senhora-rosário" class="popup popup-style">
+        <div>
+            <img class="popup-style-img" src="./Images/igreja da rosario.webp" alt="Igreja Nossa Senhora do Rosário">
+            <h3>Igreja Nossa Senhora do Rosário</h3>
+        </div>
+        <p class="popup-style-p">Edificação construída em meados de 1934, em estilo colonial na Cidade de Goiás, para os devotos da Nossa Senhora do Rosário dos Pretos. Foi demolida, tendo sua estrutura original alterada, sendo construída uma nova edificação em estilo neogótico em 1934, abrigando a Igreja Nossa Senhora do Rosário, sem os “Pretos”, junto ao convento por padres dominicanos. </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="chafariz" class="popup popup-style">
+        <div class="popup-style-div">
+            <img class="popup-style-img" src="./Images/pracadochafariz decauda.webp" alt="Chafariz de Cauda da Boa Morte">
+            <h3>Chafariz de Cauda da Boa Morte</h3>
+        </div>
+        <p class="popup-style-p">Construído em 1778, com a finalidade de dividir o abastecimento de água da cidade de Goiás. Tem em sua construção material em alvenaria de pedra, com detalhes em pedra-sabão. O chafariz possui, em seu corpo central, as bicas que forneciam água à população além de dois tanques destinados aos animais, na parte externa (Fonte: Portal IPHAN).
+        </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="mercado" class="popup popup-style">
+        <div class="popup-style-div">
+            <img class="popup-style-img" src="./Images/mercadomunicipal.webp" alt="Mercado Municipal da Cidade de Goiás">
+            <h3>Mercado Municipal da Cidade de Goiás</h3>
+        </div>
+        <p class="popup-style-p">Construído em 1926, era o espaço no qual produtores rurais comercializavam alimentos para os moradores da cidade. Em 2016 foi restaurado, preservando o caráter de comercialização de alimentos e de produtos artesanais. É também espaço de encontro onde ocorrem manifestações da cultura popular.
+        </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="patrimonio-natural" class="popup popup-style">
+        <h3>Patrimônio Natural da Cidade de Goiás</h3>
+        <p class="popup-style-p">Morro da Santa Bárbara, localizado na margem direita da cidade. Na margem esquerda, o morro de Dom Francisco, “elementos naturais responsáveis por manter o equilíbrio entre o patrimônio cultural e o natural em Goiás, testemunho do binômio Homem-Cerrado em sua correta acepção” (Fonte: Portal IPHAN).
+        </p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="serra-dourada" class="popup popup-style">
+        <h3>Serra Dourada</h3>
+        <p class="popup-style-p">Localizada entre os municípios de Goiás e cidade de Mossâmedes é um patrimônio natural dos goianos, cujo brilho dos reflexos dos raios solares provoca efeito dourado na paisagem, que é rica em vegetação nativa, além de formações rochosas.</p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="rio-vermelho" class="popup popup-style">
+        <h3>Rio Vermelho</h3>
+        <p class="popup-style-p">Elemento fundamental para construção do Estado de Goiás. Em 1725 iniciou o processo de exploração do ouro em seu leito dando origem ao Arraial de Santana, hoje Cidade de Goiás. Suas águas, que cortam a cidade, a divide em duas, de um lado, centro histórico, de outro os bairros a margem desse centro.</p>
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <div id="referencia" class="popup popup-style2">
+        <h3 class="popup-style-h3">Referências</h3>
+        <p class="popup-style2-p">DAÚDE, Rodrigo Bastos; MARQUES, Juan Bernardino. O museu das bandeiras – Muban da cidade de Goiás – Brasil: espaços não formais na educação em ciências. Enseñanza de las ciências. Extra (2013): 00957-961. Disponível em: <a href="https://ddd.uab.cat/pub/edlc/edlc_a2013nExtra/edlc_a2013nExtrap957.pdf" target="_blank">https://ddd.uab.cat/pub/edlc/edlc_a2013nExtra/edlc_a2013nExtrap957.pdf</a>. Acesso em: 25 de jun. 2019.</p>
+        <p class="popup-style2-p">Decreto 3.551/2000. Disponível em: <a href="http://portal.iphan.gov.br/uploads/legislacao/Decreto_n_3.551_de_04_de_agosto_de_2000.pdf" target="_blank">http://portal.iphan.gov.br/uploads/legislacao/Decreto_n_3.551_de_04_de_agosto_de_2000.pdf</a>. Acesso em: 10 abr. 2020.</p>
+        <p class="popup-style2-p">História - Goiás (GO). Disponível em: <a href="http://portal.iphan.gov.br/pagina/detalhes/1477/" target="_blank">http://portal.iphan.gov.br/pagina/detalhes/1477/</a>. Acesso em: 10 abr. 2020.</p>
+        <p class="popup-style2-p">Monumentos e Espaços Públicos Tombados - Goiás (GO). Disponível em: <a href="http://portal.iphan.gov.br/pagina/detalhes/1478/" target="_blank">http://portal.iphan.gov.br/pagina/detalhes/1478/</a>. Acesso em: 10 abr. 2020.</p>
+
+        <button id="fechar" class="fechar">Fechar</button>
+    </div>
+    <!-- banner sobre o quiz -->
+    <section class="quiz-banner">
+        <div>
+            <h2 class="quiz-h2">Agora é hora de testar o seu conhecimento!</h2>
+            <p class="quiz-p">Participe do nosso Quiz!</p>
+            <p class="quiz-p">Desafie-se agora e deixe a diversão começar! </p>
+        </div>
+        <a href="./quiz.html" class="quiz-a" target="_blank">QUIZ</a>
+    </section>
+    <!-- descricao -->
+    <section class="desc-banner">
+        <div class="desc-wrapper">
+            <div>
+                <h2 class="desc-h2">Mapa Interativo da Cidade de Goiás</h2>
+                <p class="desc-p">Faz parte da cartilha <b>Patrimônio na Cidade de Goiás: um olhar além do edificado</b> que é um produto educacional vinculado à dissertação de mestrado intitulada: <b>Territórios dos saberes e fazeres na cidade de Goiás: A Educação Patrimonial como proposta de ensino no curso de Edificações do Instituto Federal de Goiás - IFG</b>. De autoria de Lorena Cristina Brito Moraes pelo Programa de Pós-Graduação em Estudos Culturais, Memória e Patrimônio da Universidade Estadual de Goiás</p>
+            </div>
+            <img class="desc-img" src="./Images/monumentos.webp" alt="monumentos da cidade de Goiás">
+        </div>
+    </section>
+    <!-- ropapé -->
+    <footer>
+        <p>©Todos os direitos reservados 2023</p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="jquery.rwdImageMaps.min.js"></script>
+    <script>
+
+        $(document).ready(function (e) {
+            $('img[usemap]').rwdImageMaps();
+
+            function centralizarPopup() {
+                $(".popup").css({
+                    top: ($(window).height() - $("#popup").outerHeight()) / 2,
+                    left: Math.max(0, ($(window).width() - $("#popup").outerWidth()) / 2)
+                });
+            }
+
+            $('area, button').on('click', function () {
+                var popupId = $(this).data("popup");
+                $(popupId).show();
+                centralizarPopup();
+            });
+            $(".fechar").click(function () {
+                $(".popup").hide();
+            });
+            $(window).resize(function () {
+                centralizarPopup();
+            });
+            // $(window).resize(function () {
+            //     $("#popup").css({
+            //         top: ($(window).height() - $("#popup").outerHeight()) / 2,
+            //         left: ($(window).width() - $("#popup").outerWidth()) / 2
+            //     });
+            // });
+        })
+
+    </script>
 </body>
+
 </html>

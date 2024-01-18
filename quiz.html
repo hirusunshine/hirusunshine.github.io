@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <!-- jquery for maximum compatibility -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    /** Simple JavaScript Quiz
+     * version 0.1.0
+     * http://journalism.berkeley.edu
+     * created by: Jeremy Rue @jrue
+     *
+     * Copyright (c) 2013 The Regents of the University of California
+     * Released under the GPL Version 2 license
+     * http://www.opensource.org/licenses/gpl-2.0.php
+     * This program is distributed in the hope that it will be useful, but
+     * WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     */
+
+    var quiztitle = "Quiz";
+
+    /**
+    * Set the information about your questions here. The correct answer string needs to match
+    * the correct choice exactly, as it does string matching. (case sensitive)
+    *
+    */
+    var quiz = [
+      {
+        "question": "Q1 - O Instituto do Patrimônio Histórico e Artístico Nacional (Iphan), tem a finalidade de:",
+        "image": "",
+        "choices": [
+          "Determinar, organizar, conservar, defender e propagar o Patrimônio Histórico e Artístico Nacional.",
+          "Zelar pela proteção do patrimônio de origem afro-brasileiro.",
+          "Salvaguardar exclusivamente os espaços de origem quilombola.",
+          "Determinar, sem interferência da comunidade, os espaços que representam o patrimônio cultural.",
+        ],
+        "correct": "Determinar, organizar, conservar, defender e propagar o Patrimônio Histórico e Artístico Nacional.",
+        "explanation": "",
+      },
+      {
+        "question": "Q2 - Conforme o Art. 216 da Constituição Federal:",
+        "image": "",
+        "choices": [
+          "As formas de expressão; os modos de criar, fazer e viver; as criações científicas, artísticas e tecnológicas; as obras, objetos, documentos, edificações e demais espaços destinados às manifestações artístico-culturais; os conjuntos urbanos e sítios de valor histórico, paisagístico, artístico, arqueológico, paleontológico, ecológico e científico.",
+          "Somente as obras, os objetos, documentos, edificações e demais espaços destinados às manifestações artístico-culturais;",
+          "Exclusivamente os conjuntos urbanos e sítios de valor histórico, paisagístico, artístico, arqueológico, paleontológico, ecológico e científico.",
+          "As formas de expressão, bem como os modos de criar, fazer e viver da sociedade goiana."
+        ],
+        "correct": "As formas de expressão; os modos de criar, fazer e viver; as criações científicas, artísticas e tecnológicas; as obras, objetos, documentos, edificações e demais espaços destinados às manifestações artístico-culturais; os conjuntos urbanos e sítios de valor histórico, paisagístico, artístico, arqueológico, paleontológico, ecológico e científico.",
+        "explanation": "",
+      },
+      {
+        "question": "Q3 - A Educação Patrimonial corresponde a:",
+        "image": "",
+        "choices": [
+          "Um processo de alfabetização cultural, de transmissão de saberes envolvendo o patrimônio cultural.",
+          "Instrumento para conscientização das comunidades sobre a necessidade de preservar o Patrimônio Cultural.",
+          "Processos educativos formais, construídos de forma coletiva, que têm como foco o patrimônio cultural de origem europeia, socialmente apropriado como recurso para a compreensão sócio-histórica das referências culturais, a fim de colaborar para seu reconhecimento, valorização e preservação.",
+          "Processos educativos formais e não formais, construídos de forma coletiva e dialógica, que têm como foco o patrimônio cultural socialmente apropriado como recurso para a compreensão sócio-histórica das referências culturais, a fim de colaborar para seu reconhecimento, valorização e preservação."
+        ],
+        "correct": "Processos educativos formais e não formais, construídos de forma coletiva e dialógica, que têm como foco o patrimônio cultural socialmente apropriado como recurso para a compreensão sócio-histórica das referências culturais, a fim de colaborar para seu reconhecimento, valorização e preservação.",
+        "explanation": "",
+      },
+      {
+        "question": "Q4 - A criação do Câmpus Cidade de Goiás, em 2012, representa:",
+        "image": "",
+        "choices": [
+          "O resgate da história inicial do IFG, por ter sido na antiga capital que o Governo Federal implantou, em 1909, a primeira Escola Técnica Federal do Estado, então chamada de Escola de Aprendizes Artífices. Com a mudança da capital para Goiânia, em 1942, a escola também foi transferida.",
+          "Preservar a história inicial do IFG, por ter sido na antiga capital que o Governo Federal implantou, em 1930, a primeira Escola Técnica Federal do Estado, então chamada de Escola de Aprendizes Artífices. Com a mudança da capital para Goiânia, em 1942, a escola foi transferida para a cidade de Pirenópolis.",
+          "O resgate da história inicial do IFG, por ter sido na antiga capital que o Governo Federal implantou, em 1909, a primeira Escola Técnica Federal do Estado, então chamada de Escola de Aprendizes Artífices. Com a mudança da capital para Goiânia, em 1942, a escola também foi transferida.",
+          "Necessidade de Expansão da Rede Federal de Educação Profissional, Científica e Tecnológica, com a consolidação de um câmpus numa região com crescimento da construção civil."
+        ],
+        "correct": "O resgate da história inicial do IFG, por ter sido na antiga capital que o Governo Federal implantou, em 1909, a primeira Escola Técnica Federal do Estado, então chamada de Escola de Aprendizes Artífices. Com a mudança da capital para Goiânia, em 1942, a escola também foi transferida.",
+        "explanation": "",
+      },
+      {
+        "question": "Q5 - O Curso Técnico Integrado ao Ensino Médio em Edificações, do Instituto Federal de Goiás, Câmpus Cidade de Goiás visa:",
+        "image": "",
+        "choices": [
+          "Formar profissionais que possam ser inseridos no mundo de trabalho da Construção Civil, dentro de uma visão humanística, crítica, técnica, científica e cultural, dando-lhes condições que os favoreçam a acompanhar e desenvolver planejamentos, orçamentos, projetos, controle de qualidade, execuções e manutenção de edifícios, sejam esses edifícios com valor histórico ou modernos.",
+          "Formar profissionais que possam ser inseridos no mundo de trabalho da Construção Civil, dentro de uma visão técnica, dando-lhes condições que os favoreçam a acompanhar e desenvolver planejamentos, orçamentos, projetos, controle de qualidade, execuções e manutenção de edifícios modernos.",
+          "Formar profissionais que possam ser inseridos no mundo de trabalho da Construção Civil, dentro de uma visão humanística, dando-lhes condições que os favoreçam a acompanhar e desenvolver planejamentos, orçamentos, projetos, controle de qualidade, execuções e manutenção de edifícios, exclusivamente de valor histórico.",
+          "Preparar profissionais para o mundo de trabalho da Construção Civil, dentro de uma visão técnica e científica, dando-lhes formação necessária para acompanhar e desenvolver planejamentos, orçamentos, projetos, controle de qualidade, execuções e manutenção de edifícios."
+        ],
+        "correct": "Formar profissionais que possam ser inseridos no mundo de trabalho da Construção Civil, dentro de uma visão humanística, crítica, técnica, científica e cultural, dando-lhes condições que os favoreçam a acompanhar e desenvolver planejamentos, orçamentos, projetos, controle de qualidade, execuções e manutenção de edifícios, sejam esses edifícios com valor histórico ou modernos.",
+        "explanation": "",
+      },
+      {
+        "question": "Q6 - No Projeto Pedagógico do Curso de Edificações, do Câmpus Cidade de Goiás há o Projeto Integrador Orientado – PIO, para integração dos conteúdos ministrados com as particularidades da cidade. Neste projeto são trabalhadas as disciplinas de:",
+        "image": "",
+        "choices": [
+          "Introdução a Conservação e Restauro, Arquitetura Colonial e Patrimônio Histórico-Cultural.",
+          "Arquitetura Colonial e Patrimônio da Cidade de Goiás.",
+          "Introdução a Conservação e Restauro e Patrimônio Histórico-Cultural.",
+          "Arquitetura Colonial e Moderna da Cidade de Goiás e Conservação dos Monumentos Históricos."
+        ],
+        "correct": "Introdução a Conservação e Restauro, Arquitetura Colonial e Patrimônio Histórico-Cultural.",
+        "explanation": "",
+      },
+      {
+        "question": "Q7 - Conforme o IPHAN, os bens culturais de natureza imaterial correspondem a:",
+        "image": "",
+        "choices": [
+          "Práticas e domínios da vida social que se manifestam em saberes, ofícios e modos de fazer; celebrações; formas de expressão cênicas, plásticas, musicais ou lúdicas; e nos lugares (como mercados, feiras e santuários que abrigam práticas culturais coletivas).",
+          "Práticas e domínios da vida social que se manifestam em saberes, ofícios e modos de fazer; celebrações.",
+          "Práticas e domínios da vida social que se manifestam em saberes e nos lugares (como mercados, feiras e santuários que abrigam práticas culturais coletivas).",
+          "Práticas e domínios da vida social que se manifestam exclusivamente nas  celebrações; formas de expressão cênicas, plásticas, musicais ou lúdicas; e nos lugares (como mercados, feiras e santuários que abrigam práticas culturais coletivas)."
+        ],
+        "correct": "Práticas e domínios da vida social que se manifestam em saberes, ofícios e modos de fazer; celebrações; formas de expressão cênicas, plásticas, musicais ou lúdicas; e nos lugares (como mercados, feiras e santuários que abrigam práticas culturais coletivas).",
+        "explanation": "",
+      },
+      {
+        "question": "Q8 - O patrimônio material protegido pelo Iphan é composto por:",
+        "image": "",
+        "choices": [
+          "Um conjunto de bens culturais classificados segundo sua natureza, conforme os três Livros do Tombo: arqueológico, paisagístico e etnográfico; histórico; belas artes.",
+          "Um conjunto de bens culturais classificados segundo sua natureza, conforme os cinco Livros do Tombo: arqueológico, paisagístico e etnográfico; histórico; belas artes; das artes aplicadas; das celebrações.",
+          "Um conjunto de bens culturais classificados segundo sua natureza, conforme os quatro Livros do Tombo: arqueológico, paisagístico e etnográfico; histórico; belas artes; e das artes aplicadas.",
+          "Um conjunto de bens culturais classificados segundo sua natureza, conforme os seis  Livros do Tombo: arqueológico, paisagístico e etnográfico; histórico; belas artes; das artes aplicadas, das celebrações e dos territórios quilombolas."
+        ],
+        "correct": "Um conjunto de bens culturais classificados segundo sua natureza, conforme os quatro Livros do Tombo: arqueológico, paisagístico e etnográfico; histórico; belas artes; e das artes aplicadas.",
+        "explanation": "",
+      },
+      {
+        "question": "Q9 - Conforme o IPHAN, os bens tombados de natureza material podem ser:",
+        "image": "",
+        "choices": [
+          "Os sítios arqueológicos e paisagísticos e bens individuais; ou móveis, como coleções arqueológicas, acervos museológicos, documentais, bibliográficos, arquivísticos, videográficos, fotográficos e cinematográficos.",
+          "Imóveis, como as cidades históricas, os sítios arqueológicos e paisagísticos e os bens individuais; ou móveis, como coleções arqueológicas, acervos museológicos, documentais, bibliográficos, arquivísticos, videográficos, fotográficos e cinematográficos.",
+          "Imóveis, como as cidades históricas e os bens individuais; ou móveis, como coleções arqueológicas, acervos museológicos, documentais, bibliográficos, arquivísticos, videográficos, fotográficos e cinematográficos.",
+          "Imóveis, como as cidades históricas, os sítios arqueológicos e paisagísticos e os bens individuais; ou móveis, como coleções arqueológicas e acervos museológicos, documentais."
+        ],
+        "correct": "Imóveis, como as cidades históricas, os sítios arqueológicos e paisagísticos e os bens individuais; ou móveis, como coleções arqueológicas, acervos museológicos, documentais, bibliográficos, arquivísticos, videográficos, fotográficos e cinematográficos.",
+        "explanation": "",
+      },
+      {
+        "question": "Q10 - O Autor Pierre Nora criou o termo “lugares de memória”, “espaços que têm a função de parar o tempo, bloquear o trabalho do esquecimento, fixar um estado de coisas, imortalizar a morte, materializar o imaterial” (NORA, 1993, p. 22). Partindo desse pressuposto, podemos afirmar que:",
+        "image": "",
+        "choices": [
+          "A memória não está presente apenas em determinado local e em monumentos construídos, estando presente também nos costumes e tradições dos povos, que devem ser preservados pela sociedade, como instrumento necessário para construção de identidade.",
+          "A memória está presente apenas em determinado local e em monumentos construídos que devem ser preservados pela sociedade, como instrumento necessário para construção de identidade.",
+          "A memória está presente somente nos costumes e tradições dos povos, que devem ser preservados pela sociedade, como instrumento necessário para construção de identidade.",
+          "A memória está presente em monumentos tombados pelo IPHAN como Patrimônio Cultural e também nos costumes e tradições dos povos, que devem ser preservados pela sociedade, como instrumento necessário para construção de identidade."
+        ],
+        "correct": "A memória não está presente apenas em determinado local e em monumentos construídos, estando presente também nos costumes e tradições dos povos, que devem ser preservados pela sociedade, como instrumento necessário para construção de identidade.",
+        "explanation": "",
+      },
+
+    ];
+
+
+    /******* No need to edit below this line *********/
+    var currentquestion = 0, score = 0, submt = true, picked;
+
+    jQuery(document).ready(function ($) {
+
+      /**
+       * HTML Encoding function for alt tags and attributes to prevent messy
+       * data appearing inside tag attributes.
+       */
+      function htmlEncode(value) {
+        return $(document.createElement('div')).text(value).html();
+      }
+
+      /**
+       * This will add the individual choices for each question to the ul#choice-block
+       *
+       * @param {choices} array The choices from each question
+       */
+      function addChoices(choices) {
+        if (typeof choices !== "undefined" && $.type(choices) == "array") {
+          $('#choice-block').empty();
+          for (var i = 0; i < choices.length; i++) {
+            $(document.createElement('li')).addClass('choice choice-box').attr('data-index', i).text(choices[i]).appendTo('#choice-block');
+          }
+        }
+      }
+
+      /**
+       * Resets all of the fields to prepare for next question
+       */
+      function nextQuestion() {
+        submt = true;
+        $('#explanation').empty();
+        $('#question').text(quiz[currentquestion]['question']);
+        $('#pager').text('Questão ' + Number(currentquestion + 1) + ' de ' + quiz.length);
+        if (quiz[currentquestion].hasOwnProperty('image') && quiz[currentquestion]['image'] != "") {
+          if ($('#question-image').length == 0) {
+            $(document.createElement('img')).addClass('question-image').attr('id', 'question-image').attr('src', quiz[currentquestion]['image']).attr('alt', htmlEncode(quiz[currentquestion]['question'])).insertAfter('#question');
+          } else {
+            $('#question-image').attr('src', quiz[currentquestion]['image']).attr('alt', htmlEncode(quiz[currentquestion]['question']));
+          }
+        } else {
+          $('#question-image').remove();
+        }
+        addChoices(quiz[currentquestion]['choices']);
+        setupButtons();
+      }
+
+      /**
+       * After a selection is submitted, checks if its the right answer
+       *
+       * @param {choice} number The li zero-based index of the choice picked
+       */
+      function processQuestion(choice) {
+        if (quiz[currentquestion]['choices'][choice] == quiz[currentquestion]['correct']) {
+          $('.choice').eq(choice).css({ 'background-color': '#50D943' });
+          $('#explanation').html('<strong>Correta!</strong> ' + htmlEncode(quiz[currentquestion]['explanation']));
+          score++;
+        } else {
+          $('.choice').eq(choice).css({ 'background-color': '#D92623' });
+          $('#explanation').html('<strong>Incorreta!</strong> ' + htmlEncode(quiz[currentquestion]['explanation']));
+        }
+        currentquestion++;
+        $('#submitbutton').html('Próxima Questão &raquo;').on('click', function () {
+          if (currentquestion == quiz.length) {
+            endQuiz();
+          } else {
+            $(this).text('Checar Resposta').css({ 'color': '#222' }).off('click');
+            nextQuestion();
+          }
+        })
+      }
+
+      /**
+       * Sets up the event listeners for each button.
+       */
+      function setupButtons() {
+        $('.choice').on('mouseover', function () {
+          $(this).css({ 'background-color': '#e1e1e1' });
+        });
+        $('.choice').on('mouseout', function () {
+          $(this).css({ 'background-color': '#fff' });
+        })
+        $('.choice').on('click', function () {
+          picked = $(this).attr('data-index');
+          $('.choice').removeAttr('style').off('mouseout mouseover');
+          $(this).css({ 'border-color': '#222', 'font-weight': 700, 'background-color': '#c1c1c1' });
+          if (submt) {
+            submt = false;
+            $('#submitbutton').css({ 'color': '#000' }).on('click', function () {
+              $('.choice').off('click');
+              $(this).off('click');
+              processQuestion(picked);
+            });
+          }
+        })
+      }
+
+      /**
+       * Quiz ends, display a message.
+       */
+      function endQuiz() {
+        $('#explanation').empty();
+        $('#question').empty();
+        $('#choice-block').empty();
+        $('#submitbutton').remove();
+        $('#question').text("Você obteve " + score + " de " + quiz.length + " corretas.");
+        $(document.createElement('h2')).css({ 'text-align': 'center', 'font-size': '4em' }).text(Math.round(score / quiz.length * 100) + '%').insertAfter('#question');
+      }
+
+      /**
+       * Runs the first time and creates all of the elements for the quiz
+       */
+      function init() {
+        //add title
+        if (typeof quiztitle !== "undefined" && $.type(quiztitle) === "string") {
+          $(document.createElement('h1')).text(quiztitle).appendTo('#frame');
+        } else {
+          $(document.createElement('h1')).text("Quiz").appendTo('#frame');
+        }
+
+        //add pager and questions
+        if (typeof quiz !== "undefined" && $.type(quiz) === "array") {
+          //add pager
+          $(document.createElement('p')).addClass('pager').attr('id', 'pager').text('Questão 1 de ' + quiz.length).appendTo('#frame');
+          //add first question
+          $(document.createElement('h2')).addClass('question').attr('id', 'question').text(quiz[0]['question']).appendTo('#frame');
+          //add image if present
+          if (quiz[0].hasOwnProperty('image') && quiz[0]['image'] != "") {
+            $(document.createElement('img')).addClass('question-image').attr('id', 'question-image').attr('src', quiz[0]['image']).attr('alt', htmlEncode(quiz[0]['question'])).appendTo('#frame');
+          }
+          $(document.createElement('p')).addClass('explanation').attr('id', 'explanation').html('&nbsp;').appendTo('#frame');
+
+          //questions holder
+          $(document.createElement('ul')).attr('id', 'choice-block').appendTo('#frame');
+
+          //add choices
+          addChoices(quiz[0]['choices']);
+
+          //add submit button
+          $(document.createElement('div')).addClass('choice-box').attr('id', 'submitbutton').text('Checar Resposta').css({ 'font-weight': 700, 'color': '#222', 'padding': '30px 0' }).appendTo('#frame');
+
+          setupButtons();
+        }
+      }
+
+      init();
+    });
+  </script>
+
+  <style type="text/css" media="all">
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+    /*css reset */
+    html,
+    body,
+    div,
+    span,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    code,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    b,
+    u,
+    i {
+      border: 0;
+      /* font-size: 100%;
+      font: inherit; */
+      /* vertical-align: baseline; */
+      margin: 0;
+      padding: 0;
+    }
+
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+
+    #frame {
+      width: 80%;
+      border: 1px solid #ccc;
+      background: #fff;
+      padding: 10px;
+      margin: 3px;
+
+    }
+
+    @media (max-width: 900px) {
+      #frame {
+        width: 100%;
+      }
+    }
+
+    h1 {
+      font: normal bold 3em/1.8em "Roboto", sans-serif;
+      text-align: left;
+      border-bottom: 1px solid #999;
+      padding: 0;
+    }
+
+    h2 {
+      font: bold 2em/1.2em "Roboto", sans-serif;
+      padding: 0;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    p.pager {
+      margin: 5px 0 5px;
+      font: bold 1.2em/1em "Roboto", sans-serif;
+      color: #999;
+    }
+
+    img.question-image {
+      display: block;
+      max-width: 250px;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+      width: 100%;
+      height: auto;
+    }
+
+    #choice-block {
+      display: block;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #submitbutton {
+      background: #5a6b8c;
+    }
+
+    #submitbutton:hover {
+      background: #7b8da6;
+    }
+
+    #explanation {
+      margin: 0 auto;
+      padding: 20px;
+      width: 75%;
+      text-align: center;
+      font-size: 1.5rem;
+      font-family: "Roboto", sans-serif;
+    }
+
+    .choice-box {
+      display: block;
+      text-align: center;
+      margin: 8px auto;
+      padding: 10px 0;
+      border: 1px solid #666;
+      cursor: pointer;
+      font-size: 1.5rem !important;
+      font-family: "Roboto", sans-serif;
+      line-height: 1.7rem;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="frame" class="size" role="content"></div>
+</body>
+
+</html>

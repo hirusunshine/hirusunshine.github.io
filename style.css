@@ -1,0 +1,238 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  border: none;
+  outline: none;
+  list-style-type: none;
+}
+header {
+  background-color: #424242;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #eeeeee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@media (max-width: 900px) {
+  header {
+    flex-direction: column;
+  }
+}
+@media (max-width: 900px) {
+  .header-h1 {
+    font-size: 1.7em;
+  }
+}
+.click {
+  color: black;
+  text-decoration: none;
+  background-color: #e0e0e0;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: black;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+click:visited {
+  color: black;
+}
+@media (max-width: 900px) {
+  .click {
+    font-size: 1rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 325px) {
+  .header-div {
+    margin-top: 20px;
+  }
+}
+
+.popup-style {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  max-width: 400px; /* Largura máxima do popup */
+  width: 100%;
+  text-align: center;
+}
+@media (max-width: 450px) {
+  .popup-style {
+    max-width: 430px;
+    width: 85%;
+  }
+}
+.popup-style-p {
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+.popup-style-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.popup-style-img {
+  width: 100px;
+}
+.popup-style2 {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  width: 80%;
+  text-align: center;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+.popup-style2-p {
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+@media (max-width: 400px) {
+  .popup-style2-p {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 400px) {
+  .popup-style-h3 {
+    font-size: 1em;
+  }
+}
+.fechar {
+  border: 1px solid black;
+  border-radius: 10%;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+@media (max-width: 400px) {
+  .fechar {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.img {
+  max-width: 100%;
+}
+.img-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.area {
+  cursor: pointer;
+}
+.quiz-banner {
+  background-color: #212121;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+.quiz-h2 {
+  color: #eeeeee;
+  line-height: 3rem;
+}
+@media (max-width: 670px) {
+  .font {
+    line-height: 2rem;
+  }
+}
+.quiz-p {
+  color: #eeeeee;
+  font-size: 1.3rem;
+  line-height: 1.7rem;
+}
+.quiz-a {
+  color: black;
+  text-decoration: none;
+  background-color: #e0e0e0;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: black;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 1.2rem;
+}
+quiz-a:visited {
+  color: black;
+}
+@media (max-width: 670px) {
+  .quiz-a {
+    margin-top: 20px;
+  }
+}
+.desc-banner {
+  background-color: #424242;
+
+  padding: 50px;
+  color: #eeeeee;
+}
+.desc-h2 {
+  margin-bottom: 20px;
+}
+.desc-p {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+}
+@media (min-width: 1000px) {
+  .desc-p {
+    max-width: 50vw;
+  }
+}
+.desc-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.desc-img {
+  max-width: 400px;
+}
+@media (max-width: 450px) {
+  .desc-img {
+    width: 100%;
+  }
+}
+footer {
+  background-color: #212121;
+  padding: 20px;
+  text-align: center;
+  color: #eeeeee;
+}
